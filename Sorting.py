@@ -22,4 +22,19 @@ num1 = [6,7,1,4,2,3,5,9,8,10]
 
 for i in range(10):
     for d in range(0, 10-i-1):
-        if num1[d] num1[d+1]
+        if num1[d] > num1[d+1]:
+            temp = num1[d]
+            num1[d] = num1[d + 1]
+            num1[d+1] = temp
+print(num1)
+
+#insertion sort
+num2 = [6,7,3,2,4,5,8,0,9,10,1]
+for i in range(1, 11):
+    num = num2[i]
+    j = i - 1
+    while j >= 0 and num < num2[j]:
+        num2[j+1] = num2[j]
+        j = j - 1
+    num2[j+1] = num
+print(num2)
