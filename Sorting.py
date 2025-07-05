@@ -17,7 +17,7 @@ print(num)
 
 
 
-#bubble sort
+#bubble sort (it will keep comparing the adjacent number and swap them)
 num1 = [6,7,1,4,2,3,5,9,8,10]
 
 for i in range(10):
@@ -38,3 +38,37 @@ for i in range(1, 11):
         j = j - 1
     num2[j+1] = num
 print(num2)
+
+#merge sort
+num = [2,6,7,1,3,9,4,8,5,0]
+def merge_sort(num, low, high):
+    if low < high:
+        mid = (low + high) // 2
+        merge_sort(num, low, mid)
+        merge_sort(num, mid+1, high)
+        merge(num, low, mid, high)
+def merge(num, low, mid, high):
+    c = []
+    start1 = low
+    start2 = mid + 1
+    while start1 <= mid and start2 <= high:
+        if num[start1] <= num[start2]:
+            c.append(num[start1])
+            start1 = start1 + 1
+        else:
+            c.append(num[start2])
+            start2 = start2 + 1
+    while start1 <= mid:
+        c.append(num[start1])
+        start1 = start1 + 1
+    while start2 <= high:
+        c.append(num[start2])
+        start2 = start2 + 1
+
+    k = 0
+    for i in range(low, high + 1):
+        num[i] = c[k]
+        k = k + 1
+
+merge_sort(num, 0, 9)
+print(num)
