@@ -40,3 +40,15 @@ def postorder(root):
   
 print("----")
 postorder(root)
+
+
+def search(root,element):
+  if root.data == element:
+    return True
+  elif root.data > element and root.leftchild != None:
+    return search(root.leftschild, element)
+  elif root.data < element and root.rightchild != None:
+    return search(root.rightchild, element)
+  else:
+    return False
+      
