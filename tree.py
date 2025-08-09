@@ -46,9 +46,37 @@ def search(root,element):
   if root.data == element:
     return True
   elif root.data > element and root.leftchild != None:
-    return search(root.leftschild, element)
+    return search(root.leftchild, element)
   elif root.data < element and root.rightchild != None:
     return search(root.rightchild, element)
   else:
     return False
-      
+  
+
+s = search(root, 20)
+if s == True:
+  print("Your number is in the tree.")
+else:
+  print("Your number is not in the tree.")
+
+def insert(root, element):
+  if root == None:
+    return Tree(element)
+  elif element < root.data:
+    root.leftchild = insert(root.leftchild, element)
+  else:
+    root.rightchild = insert(root.rightchild, element)
+  return root
+
+root = insert(root, 90)
+postorder(root)
+
+def delete(root, element):
+  if root == None:
+    return root
+  elif element > root.data:
+    root.rightchild = delete(root.rightchild, element)
+  elif element < root.data:
+    root.leftchild = delete(root.leftchild, element)
+  else:
+    pass
