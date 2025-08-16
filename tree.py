@@ -79,4 +79,29 @@ def delete(root, element):
   elif element < root.data:
     root.leftchild = delete(root.leftchild, element)
   else:
-    pass
+    #onlyleftchild
+    if root.rightchild == None:
+      temp = root.leftchild
+      root = None
+      return temp
+    elif root.leftchild == None:
+      temp = root.rightchild
+      root = None
+      return temp
+    else:
+      temp = inorder_successor(root.rightchild)
+      t = root.data
+      temp.data = t
+      root.rightchild = delete(root.rightchild, temp.data)
+
+
+def inorder_successor(root):
+  current = root
+  while current.leftchild != None:
+    current = current.leftchild
+  return current
+  
+  
+print("----")  
+delete(root, 30)
+inorder(root)
