@@ -1,0 +1,11 @@
+class Graph:
+  def __init__(self, n):
+    self.list = [[]for i in range(n)]
+    self.n = n
+  def create_edge(self, n1, n2):
+    self.list[n1].append(n2)
+    self.list[n2].append(n1)
+    
+graph = Graph(4)
+
+print(graph.list)
